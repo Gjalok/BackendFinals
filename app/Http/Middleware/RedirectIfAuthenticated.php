@@ -25,6 +25,10 @@ class RedirectIfAuthenticated
             }
         }
 
+        if (Auth::guard($guard)->check()) {
+            return redirect()->route('quizzes.index'); // Adjust this path to your quizzes page
+        }
+
         return $next($request);
     }
 }
